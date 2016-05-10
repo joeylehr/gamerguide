@@ -11,17 +11,4 @@
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
 
-development:
-  secret_key_base: <%= ENV["secret_key_base"] %> 
-  game_api: <%= ENV["game_api"] %>
-
-test:
-  secret_key_base: <%= ENV["secret_key_base"] %> 
-  game_api: <%= ENV["game_api"] %>
-
-# Do not keep production secrets in the repository,
-# instead read values from the environment.
-production:
-  secret_key_base: <%= ENV["secret_key_base"] %>
-  game_api: <%= ENV["game_api"] %>
-
+API_KEY: "a96b654aa317c1b5a10343a84aa1ea380ba3ffe5"

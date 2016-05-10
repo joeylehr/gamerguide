@@ -9,6 +9,9 @@ class GamesController < ApplicationController
   end
 
   def game_query
+    if Game.first.nil?
+      GiantBombsConnection.new 
+    end
     @query = params["title"].downcase.split(" ")
     @console = params["console"]
     @full_list = Game.game_finder(@console, @query)

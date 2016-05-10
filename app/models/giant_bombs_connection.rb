@@ -29,11 +29,8 @@ class GiantBombsConnection
     end
   end
 
-  def api_key
-    "a96b654aa317c1b5a10343a84aa1ea380ba3ffe5"
-  end
-
   def base_path
+    api_key = ENV["API_KEY"]
     "/games/?api_key=#{api_key}&format=json&offset=#{offset}"
   end
 
