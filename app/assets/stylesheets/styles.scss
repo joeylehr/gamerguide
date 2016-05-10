@@ -1,0 +1,27 @@
+.game-search {
+  font-size: 30pt;
+  height:50px;
+  width:400px;
+}
+
+.game {
+  overflow: hidden; 
+  display: inline-block;
+  width: 25%;
+  margin-bottom: 10px;
+  vertical-align: top;
+}
+
+.freeze-pane {
+  position: fixed;
+}
+
+.specific-game-image {
+  vertical-align: top;
+  display: inline-block;
+}
+
+.specific-game-info {
+  display: inline-block;
+}
+
