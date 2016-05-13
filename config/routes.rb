@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :games, only: [:show]
   root 'games#index'
+  get '/show', to: 'games#show', as: 'show'
   get '/game_query', to: 'games#game_query', as: 'game_query'
-
+  get '/database', to: 'games#database', as: 'database'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
