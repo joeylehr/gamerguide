@@ -27,6 +27,7 @@ class GamesController < ApplicationController
     query = params["title"].downcase.split(" ")
     console = params["console"]
     @full_list = $games.game_finder(console, query)
+    binding.pry
     render json: {games: @full_list}
 
   end
