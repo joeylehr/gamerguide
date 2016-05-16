@@ -11,7 +11,7 @@ class GiantBombsConnection
   include HTTParty
   base_uri 'http://www.giantbomb.com/api'
   attr_reader :offset
-  attr_accessor :status
+  attr_accessor :status, :all_games
 
 
   def game_finder(console, query)
@@ -47,11 +47,6 @@ class GiantBombsConnection
     @games_hash
   end
 
-
-  def all_games
-    @all_games 
-  end  
-
   # def n64_games
   #   self.all_games.select do |game| 
   #     game.fetch(:console) == "N64"
@@ -74,7 +69,6 @@ class GiantBombsConnection
     # platforms = {"21": "NES", "43": "N64", "9": "SNES"}
     platforms = {"43": "N64"}
     @offset = 100
-    binding.pry
     @status = "empty"
     @all_games = all_games_per_console(platforms)
   end
