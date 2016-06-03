@@ -15,8 +15,8 @@ class GiantBombsConnection
 
 
 def initialize
-  platforms = {"21": "NES", "43": "N64", "9": "SNES"}
-  # platforms = {"43": "N64"}
+  # platforms = {"21": "NES", "43": "N64", "9": "SNES"}
+  platforms = {"43": "N64"}
   @offset = 100
   @all_games = all_games_per_console(platforms)
   end
@@ -31,7 +31,6 @@ def initialize
       when "2"
       @all_games.find_all { |game| (game[:console] == console) && game[:title].include?("#{query[0]}") && game[:title].include?("#{query[1]}")}
       when "3"
-      binding.pry
       @all_games.find_all { |game| (game[:console] == console) && game[:title].include?("#{query[0]}") && game[:title].include?("#{query[1]}") && game[:title].include?("#{query[2]}")}  
       when "4"
       @all_games.find_all { |game| (game[:console] == console) && game[:title].include?("#{query[0]}") && game[:title].include?("#{query[1]}") && game[:title].include?("#{query[2]}") && game[:title].include?("#{query[3]}")}        

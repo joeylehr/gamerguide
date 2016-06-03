@@ -23,7 +23,9 @@ $(document).on("ready page:load", function(){
         var id = games[index].game_bomber_id
         $(".selected-games ul").append("<div class='game'>" + "<br>" + "<img src='" + image +"'>" + "<input type='hidden' value='" + id +"'>" + "<div class='desc-" + id + "'>" + "</div>" + "</div>" + "<div style='display: none;' class='hidden_name'>" + title  + "</div>" )
       }
-  })
+    }).error(function(){
+      $(".selected-games ul").append('<img src="../assets/bridezilla.jpg">')
+    })
   }),
 
   $("body").on("click", ".trick-search", (function(event){ 
@@ -45,36 +47,39 @@ $(document).on("ready page:load", function(){
         var image = games[index].image
         var id = games[index].game_bomber_id
         $(".selected-games ul").append("<div class='game'>" + "<br>" + "<img src='" + image +"'>" + "<input type='hidden' value='" + id +"'>" + "<div class='desc-" + id + "'>" + "</div>" + "</div>" + "<div style='display: none;' class='hidden_name'>" + title  + "</div>" )
-      };
-    })
+        };
+      }).error(function(){
+      $(".selected-games ul").append('<img src="../assets/bridezilla.jpg">')     
+      })
     })
   ),
-      $("body").on("click", ".game img", (function(event){
-      event.preventDefault();
-      // $(".game-info").show();
-      $(".specific-game-image").text("")
-      $(".specific-game-info").text("")
-      var game_id = $(this).parent().find('input').val()
-      // var that = this
-      $.ajax({
-        url: '/show',
-        method: "GET",
-        data: {game_id: game_id}
-      }).success(function(response, setting){
-        var image = response.game[0].image;
-        var title = response.title;
-        var release_date = response.release_date;
-        var game_link = response.game[0].link;
-        var log_line = response.log_line;
-        var alias = response.game[0].alias;
-        var console = response.game[0].console;
-        $(".specific-game-image").prepend("<img src='" + image +"'>")
-        $(".specific-game-info").append("<strong> Title: </strong>" + "<a href='" + game_link + "' target='_blank'>" + title + "</a>" + "<br>")
-        $(".specific-game-info").append("<strong> Console: </strong> " + console + "<br>")
-        $(".specific-game-info").append("<strong> Release Date: </strong> " + release_date + "<br>")
-        $(".specific-game-info").append("<strong> Summary: </strong> " + log_line + "<br>")
-        });
-    })
-)
-
+  $("body").on("click", ".game img", (function(event){
+  event.preventDefault();
+  // $(".game-info").show();
+  $(".specific-game-image").text("")
+  $(".specific-game-info").text("")
+  var game_id = $(this).parent().find('input').val()
+  // var that = this
+  $.ajax({
+    url: '/show',
+    method: "GET",
+    data: {game_id: game_id}
+  }).success(function(response, setting){
+    var image = response.game[0].image;
+    var title = response.title;
+    var release_date = response.release_date;
+    var game_link = response.game[0].link;
+    var log_line = response.log_line;
+    var alias = response.game[0].alias;
+    var console = response.game[0].console;
+    $(".specific-game-image").prepend("<img src='" + image +"'>")
+    $(".specific-game-info").append("<strong> Title: </strong>" + "<a href='" + game_link + "' target='_blank'>" + title + "</a>" + "<br>")
+    $(".specific-game-info").append("<strong> Console: </strong> " + console + "<br>")
+    $(".specific-game-info").append("<strong> Release Date: </strong> " + release_date + "<br>")
+    $(".specific-game-info").append("<strong> Summary: </strong> " + log_line + "<br>")
+    }).error(function(){
+      $(".specific-game-image").prepend('<img src="../assets/bridezilla.jpg" height="170px" width="195px">')
+      $(".specific-game-info").append("Err...Rowr")
+    });
+  }));
 })
